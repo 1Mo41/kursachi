@@ -1,19 +1,20 @@
 <?php
 
 namespace Controller;
+
 use Illuminate\Database\Capsule\Manager as DB;
-use Model\Compound;
-use Model\pol;
-use Model\Subdivision;
-use Model\Position;
-use Model\TypeS;
-use Model\Post;
+
+use Model\Reviews;
+use Model\Menu;
+use Src\FileUploader;
 use Src\View;
 use Src\Request;
 use Model\User;
-use Model\Employees;
+use Model\Typedish;
 use Src\Auth\Auth;
 use Src\Validator\Validator;
+
+
 class Site
 {
     public function index(Request $request): string
@@ -54,20 +55,83 @@ class Site
 
     public function proverka(Request $request): string
     {
-
-        return new View('site.proverka');
+        $menu = Menu::all();
+//        $emplos = DB::table('menu')
+//            ->join('typedish','menu.typeDishId','=','typedish.typeDishId')
+//            ->select('menu.*','typedish.*')
+//            ->get();
+        return new View('site.proverka', ['menu' => $menu]);
     }
 
-    public function hello(Request $request): string
+    public function hello(): string
     {
-
-        return new View('site.hello');
+        $typeDish = Typedish::all();
+        return new View('site.hello', ['typeDish' => $typeDish]);
     }
 
     public function add_menu(Request $request): string
     {
+            if ($request->method === 'POST') {
+                $validator = new Validator($request->all(), [
+                    'nameImg' => ['required'],
+                    'ves' => ['required'],
+                    'price' => ['required'],
+                    'description' => ['required'],
+                    'photo' => ['required', 'fileType', 'fileSize']
+                ], [
+                    'required' => 'Поле :field пусто'
+                ]);
 
-        return new View('site.add_menu');
+            $fileUploader = new FileUploader($_FILES['photo']);
+
+            $destination = 'assets/img';
+
+            $newFileName = $fileUploader->upload($destination);
+
+            if (DB::table('menu')->insert([
+                'photo' => $destination . '/' . $newFileName,
+                'nameIng' => $_POST['nameIng'],
+                'ves' => $_POST['ves'],
+                'price' => $_POST['price'],
+                'description' => $_POST['description'],
+                'typeDishId' => $_POST['typeDishId'],
+            ])) {
+                app()->route->redirect('/proverka');
+            }
+        }
+        $typeDish = Typedish::all();
+
+        return (new View())->render('site.add_menu',['typeDish'=>$typeDish]);
+    }
+
+    public function add_reviews(Request $request): string
+    {
+        if ($request->method === 'POST' && Reviews::create($request->all())) {
+            app()->route->redirect('/reviews');
+        }
+        return new View('site.add_reviews');
+    }
+
+    public function reviews(): string
+    {
+        $reviews = Reviews::all();
+
+        return new View('site.reviews', ['reviews' => $reviews]);
+    }
+
+    public function search(Request $request): string
+    {
+        $typeDish = Typedish::all();
+        $menu = Menu::all();
+
+        $search1 = $request->all();
+        if (isset($search1['search1'])) {
+            $cartons = DB::table('menu')
+                ->join('typedish', 'menu.typeDishId', '=', 'typedish.typeDishId')
+                ->where('typedish.name', $search1['search1'])
+                ->get();
+        }
+        return (new View())->render('site.search', ['cartons' => $cartons, 'menu' => $menu, 'typeDish' => $typeDish]);
     }
 
 

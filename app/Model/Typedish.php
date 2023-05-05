@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class pol extends Model
+class  Typedish extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'НазваниеПола'
+        'name',
     ];
 
-    protected $table = 'pol';
+    protected $table = 'typedish';
 }

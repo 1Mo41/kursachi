@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class TypeS extends Model
+class  Reviews extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'name'
+        'author',
+        'content',
+        'rating'
     ];
-    protected $table = 'TypeS';
 
+    protected $table = 'reviews';
 }

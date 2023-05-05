@@ -12,19 +12,23 @@
 <main>
     <h2 class="centr">Добавить в меню</h2>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="zapros">
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-            <label>Ингредиент<br> <input type="text" name="ФИО"></label>
-            <label>Ингредиент<br><input type="date" name="birthday"></label>
+            <label>Название<br> <input type="text" name="nameIng"></label>
+            <label>Цена <br><input type="text" name="price"></label>
+            <label>Вес <br><input type="text" name="ves"></label>
+            <label>Описание<br><input type="text" name="description"></label>
+            <label>Тип блюда
+                <select name="typeDishId">
+                    <?php
+                    foreach ($typeDish as $typeDis){
+                        echo "<option value=\"$typeDis->typeDishId\">" . $typeDis->name . '</option>';
+                    }
+                    ?>
+                </select>
             </label>
-
-            <label>Описание <br><input type="text" name="Адрес"></label>
-            <label>Цена<br> <input type="number" name="age"></label>
-
-
-
-
+            <input  type="file" name="photo">
             <button>Добавить</button>
         </div>
     </form>

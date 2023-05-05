@@ -20,10 +20,10 @@
             <label>Имя <br><input type="text" name="name"></label><br>
             <label>Логин<br> <input type="text" name="login"></label><br>
             <label>Пароль<br> <input type="password" name="password"></label><br><br>
-<!--            <label>Роль <select class="prof" name="prof">-->
-<!--                    <option value="0">Сотрудник</option>-->
-<!--                    <option value="1">Админ</option> <br> </select>-->
-<!--            </label> <br>-->
+            <label>Роль <select class="prof" name="prof">
+                    <option value="0">Сотрудник</option>
+                    <option value="1">Админ</option> <br> </select>
+            </label> <br>
             <button>Зарегистрироваться</button>
         </div>
     </form>

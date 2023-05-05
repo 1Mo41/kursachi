@@ -2,7 +2,7 @@
 return [
     'driver' => 'mysql',
     'host' => 'localhost',
-    'database' => 'Restoran',
+    'database' => 'restoran',
     'username' => 'root',
     'password' => 'QWEasd123',
     'charset' => 'utf8',

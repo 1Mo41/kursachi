@@ -3,7 +3,6 @@ body{
 }
 .header{
 
-
 }
 .vixod{
     float: right;
@@ -115,7 +114,8 @@ label{
 }
 .p{
     color: white;
-    width: 300px;
+    padding: 5px;
+
 }
 .colum{
     display: flex;
@@ -131,4 +131,12 @@ select{
     height: 40px;
     width: 200px;
     border-radius: 10px;
+}
+.block{
+    background-color: #6D6D6D;
+    width: 200px;
+    height: 250px;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
