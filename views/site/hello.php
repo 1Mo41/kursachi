@@ -1,15 +1,11 @@
 <div class="zaprosik">
-    <h2 class="centr">Поиск сотрудников</h2>
+    <h2 class="centr">Поиск в меню</h2>
 
 
     <form method="post" action="/kursachi/search" class="discipline">
         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-        <select  name="search1" >
-            <option >Горячее</option>
-            <option >Напитки</option>
-            <option >Десерты</option>
-        </select>
+        <label> Блюдо<br><input type="text" name="search1" required=""  ></label>
 
-        <button>Выбрать</button>
+        <button class="but" >Выбрать</button>
     </form>
 </div>

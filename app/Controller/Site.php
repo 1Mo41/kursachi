@@ -24,6 +24,7 @@ class Site
     }
 
 
+
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
@@ -56,11 +57,15 @@ class Site
     public function proverka(Request $request): string
     {
         $menu = Menu::all();
-//        $emplos = DB::table('menu')
-//            ->join('typedish','menu.typeDishId','=','typedish.typeDishId')
-//            ->select('menu.*','typedish.*')
-//            ->get();
-        return new View('site.proverka', ['menu' => $menu]);
+        $typeDish = Typedish::all();
+        $search2 = $request->all();
+        if (isset($search2['search2'])) {
+            $carton = DB::table('menu')
+                ->join('typedish', 'menu.typeDishId', '=', 'typedish.typeDishId')
+                ->where('typedish.name', $search2['search2'])
+                ->get();
+        }
+        return (new View())->render('site.proverka', ['carton' => $carton, 'menu' => $menu, 'typeDish' => $typeDish]);
     }
 
     public function hello(): string
@@ -128,7 +133,7 @@ class Site
         if (isset($search1['search1'])) {
             $cartons = DB::table('menu')
                 ->join('typedish', 'menu.typeDishId', '=', 'typedish.typeDishId')
-                ->where('typedish.name', $search1['search1'])
+                ->where('menu.nameIng', 'LIKE', '%' . $search1['search1'] . '%')
                 ->get();
         }
         return (new View())->render('site.search', ['cartons' => $cartons, 'menu' => $menu, 'typeDish' => $typeDish]);

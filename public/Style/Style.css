@@ -140,3 +140,18 @@ select{
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
 }
+.sort{
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin: 10px;
+}
+.yes{
+    margin-bottom: 5px;
+}
+.discipline {
+    display: flex;
+    flex-direction: column;
+    margin-left: 300px;
+
+}
