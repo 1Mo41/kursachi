@@ -9,12 +9,15 @@
 
     <button>Выбрать</button>
 </form>
+<?php 
 
+?>
 <div class="menu">
     <?php
     foreach ($carton as $carto){
-
+        $img = $carto->photo;
         echo '<div class="block">';
+        echo "<img class='img' src=/kursachi/public/{$img} alt='Фото' >";
         echo '<p  class="p">Название: ' . $carto->nameIng. '</p>';
         echo '<p  class="p">Вес: ' . $carto->ves. '</p>';
         echo '<p  class="p">Цена: ' . $carto->price. '</p>';

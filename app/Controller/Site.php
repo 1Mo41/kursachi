@@ -76,6 +76,7 @@ class Site
 
     public function add_menu(Request $request): string
     {
+        $typeDish = Typedish::all();
             if ($request->method === 'POST') {
                 $validator = new Validator($request->all(), [
                     'nameImg' => ['required'],
@@ -89,22 +90,22 @@ class Site
 
             $fileUploader = new FileUploader($_FILES['photo']);
 
-            $destination = 'assets/img';
+            $destination = 'uploads';
 
             $newFileName = $fileUploader->upload($destination);
 
             if (DB::table('menu')->insert([
-                'photo' => $destination . '/' . $newFileName,
                 'nameIng' => $_POST['nameIng'],
                 'ves' => $_POST['ves'],
                 'price' => $_POST['price'],
                 'description' => $_POST['description'],
+                'photo' => $destination . '/' . $newFileName,
                 'typeDishId' => $_POST['typeDishId'],
             ])) {
                 app()->route->redirect('/proverka');
             }
         }
-        $typeDish = Typedish::all();
+
 
         return (new View())->render('site.add_menu',['typeDish'=>$typeDish]);
     }

@@ -135,7 +135,7 @@ select{
 .block{
     background-color: #6D6D6D;
     width: 200px;
-    height: 250px;
+    height: 400px;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
@@ -154,4 +154,8 @@ select{
     flex-direction: column;
     margin-left: 300px;
 
+}
+.img{
+    height: 200px;
+    width: 200px;
 }
