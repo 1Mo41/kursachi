@@ -24,7 +24,6 @@ class Site
     }
 
 
-
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
@@ -40,7 +39,7 @@ class Site
             return new View('site.login');
         } //Если удалось аутентифицировать пользователя, то редирект
         else if (Auth::attempt($request->all())) {
-            app()->route->redirect('/hello');
+            app()->route->redirect('/glavnaya');
         } else {
             //Если аутентификация не удалась, то сообщение об ошибке
             return new View('site.login', ['message' => 'Неправильные логин или пароль']);
@@ -51,7 +50,12 @@ class Site
     public function logout(): void
     {
         Auth::logout();
-        app()->route->redirect('/hello');
+        app()->route->redirect('/glavnaya');
+    }
+    public function glavnaya() : string
+    {
+        return new View('site.glavnaya');
+
     }
 
     public function proverka(Request $request): string
@@ -73,43 +77,6 @@ class Site
         $typeDish = Typedish::all();
         return new View('site.hello', ['typeDish' => $typeDish]);
     }
-
-    public function add_menu(Request $request): string
-    {
-        $typeDish = Typedish::all();
-            if ($request->method === 'POST') {
-                $validator = new Validator($request->all(), [
-                    'nameImg' => ['required'],
-                    'ves' => ['required'],
-                    'price' => ['required'],
-                    'description' => ['required'],
-                    'photo' => ['required', 'fileType', 'fileSize']
-                ], [
-                    'required' => 'Поле :field пусто'
-                ]);
-
-            $fileUploader = new FileUploader($_FILES['photo']);
-
-            $destination = 'uploads';
-
-            $newFileName = $fileUploader->upload($destination);
-
-            if (DB::table('menu')->insert([
-                'nameIng' => $_POST['nameIng'],
-                'ves' => $_POST['ves'],
-                'price' => $_POST['price'],
-                'description' => $_POST['description'],
-                'photo' => $destination . '/' . $newFileName,
-                'typeDishId' => $_POST['typeDishId'],
-            ])) {
-                app()->route->redirect('/proverka');
-            }
-        }
-
-
-        return (new View())->render('site.add_menu',['typeDish'=>$typeDish]);
-    }
-
     public function add_reviews(Request $request): string
     {
         if ($request->method === 'POST' && Reviews::create($request->all())) {
