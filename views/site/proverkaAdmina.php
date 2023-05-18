@@ -9,15 +9,15 @@
         echo '<p  class="p">Вес: ' . $carto->ves . '</p>';
         echo '<p  class="p">Цена: ' . $carto->price . '</p>';
         echo '<p  class="p">Описание: ' . $carto->description . '</p>';
-
+        echo '</div>';
 
 
     ?>
-        <button><a style="text-decoration: none; color: black" href="<?= app()->route->getUrl('/proverka?del=' . "$carto[id]") ?>">Удалить блюдо</a></button>
+        <button><a style="text-decoration: none; color: black" href="<?= app()->route->getUrl('/proverkaAdmina?del=' . "$carto[id]") ?>">Удалить блюдо</a></button>
 
        <?php ?>
      <?php
-        echo '</div>';
+
     }
     ?>
 </div>

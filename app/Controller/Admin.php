@@ -64,30 +64,4 @@ class Admin
 
         return (new View())->render('site.proverkaAdmina', ['carton' => $carton, 'typeDish' => $typeDish]);
     }
-    public function add_personal (Request $request): string
-    {
-        $personal = Personal::all();
-        $tables = Tables::all();
-        $positions = Position::all();
-
-
-
-        $fileUploader = new FileUploader($_FILES['photoNaPass']);
-
-            $destination = 'uploads';
-
-            $newFileName = $fileUploader->upload($destination);
-
-            if (DB::table('personal')->insert([
-                'firstName' => $_POST['firstName'],
-                'positionID' => $_POST['positionID'],
-                'tableID' => $_POST['tableID'],
-                'photoNaPass' => $destination . '/' . $newFileName,
-            ])) {
-                app()->route->redirect('/proverkaAdmin');
-            }
-
-
-        return  new View('site.add_personal',['personal'=>$personal,'tables'=>$tables,'positions'=>$positions]);
-    }
     }

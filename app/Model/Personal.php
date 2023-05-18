@@ -12,7 +12,7 @@ class Personal extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'id',
+        'idPer',
         'firstName',
         'positionID',
         'tableID',

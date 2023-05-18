@@ -28,12 +28,8 @@
             elseif(app()->auth::check() && app()->auth::user()->isAdmin()):
                 ?>
                 <a>Вы зашли под пользователем: <b>(<?= app()->auth::user()->name ?>)</b></a>
-                <a class="add" href="<?= app()->route->getUrl('/proverkaAdmina') ?>">Меню</a>
                 <a  href="<?= app()->route->getUrl('/add_menu') ?>">Добавить меню</a>
-                <a class="add" href="<?= app()->route->getUrl('/hello') ?>">Поиск по меню </a>
-                <a class="add" href="<?= app()->route->getUrl('/add_reviews') ?>">Написить отзыв </a>
-                <a class="add" href="<?= app()->route->getUrl('/reviews') ?>">Отзывы </a>
-                <a class="add" href="<?= app()->route->getUrl('/add_personal') ?>">Добавить сотрудника </a>
+                <a class="add" href="<?= app()->route->getUrl('/proverkaAdmina') ?>">Меню Для админа</a>
             <?php
             endif;
             ?>
