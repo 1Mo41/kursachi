@@ -14,6 +14,7 @@
 
     ?>
         <button><a style="text-decoration: none; color: black" href="<?= app()->route->getUrl('/proverkaAdmina?del=' . "$carto[id]") ?>">Удалить блюдо</a></button>
+        <button><a style="text-decoration: none; color: black" href="<?= app()->route->getUrl('/izmenenie?izmena=' . "$carto[id]") ?>">Изменить блюдо</a></button>
 
        <?php ?>
      <?php

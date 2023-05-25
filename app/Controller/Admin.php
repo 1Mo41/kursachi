@@ -49,6 +49,7 @@ class Admin
         }
         return (new View())->render('site.add_menu', ['typeDish' => $typeDish]);
     }
+
     public function proverkaAdmina(Request $request): string
     {
         $carton = Menu::all();
@@ -64,4 +65,22 @@ class Admin
 
         return (new View())->render('site.proverkaAdmina', ['carton' => $carton, 'typeDish' => $typeDish]);
     }
+
+    public function izmenenie(Request $request): string
+    {
+
+        $typeDish = Typedish::all();
+        if (isset($_GET['izmena'])) {
+            $id = $_GET['izmena'];
+            $carton = DB::table('menu')
+                ->where('menu.id', $id)
+                ->select('menu.*')
+                ->get();
+            $carton = (array)$carton[0];
+
+
+            return (new View())->render('site.izmenenie', ['carton' => $carton, 'typeDish' => $typeDish]);
+        }
     }
+    
+}

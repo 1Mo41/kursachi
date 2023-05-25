@@ -27,9 +27,11 @@
             <?php
             elseif(app()->auth::check() && app()->auth::user()->isAdmin()):
                 ?>
+
                 <a>Вы зашли под пользователем: <b>(<?= app()->auth::user()->name ?>)</b></a>
                 <a  href="<?= app()->route->getUrl('/add_menu') ?>">Добавить меню</a>
                 <a class="add" href="<?= app()->route->getUrl('/proverkaAdmina') ?>">Меню Для админа</a>
+                <a class="add" href="<?= app()->route->getUrl('/izmenenie') ?>">Изменение</a>
             <?php
             endif;
             ?>

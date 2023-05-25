@@ -14,6 +14,7 @@ Route::add(['POST','GET'], '/search', [Controller\Site::class, 'search']);
 Route::add(['GET','POST'], '/proverkaAdmina', [Controller\Admin::class, 'proverkaAdmina'])
     ->middleware('auth','admin');
 Route::add(['GET','POST'], '/proverka', [Controller\Site::class, 'proverka']);
+Route::add(['GET','POST'], '/izmenenie', [Controller\Admin::class, 'izmenenie']);
 Route::add(['GET','POST'], '/reviews', [Controller\Site::class, 'reviews']);
 Route::add(['GET','POST'], '/add_reviews', [Controller\Site::class, 'add_reviews'])
     ->middleware('auth','admin');
