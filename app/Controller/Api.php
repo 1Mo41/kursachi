@@ -5,6 +5,7 @@ namespace Controller;
 use Illuminate\Database\Capsule\Manager as DB;
 use Model\Menu;
 use Model\User;
+use Src\Validator\Validator;
 use Src\Request;
 use Src\View;
 use Src\FileUploader;
@@ -26,25 +27,54 @@ class Api
 
     public function signup(Request $request)
     {
-        $user = new User();
-        $user->id = $request->id;
-        $user->name = $request->name;
-        $user->login = $request->login;
-        $user->password = $request->password;
-        $user->prof = 0;
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'id' => ['required', 'unique:users,id'],
+                'name' => ['required'],
+                'login' => ['required', 'unique:users,login'],
+                'password' => ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально',
+            ]);
 
-        if ($user->save()) {
-            (new View())->toJSON($request->all());
+            if ($validator->fails()) {
+                (new View())->toJSON(['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+            $user = new User();
+            $user->id = $request->id;
+            $user->name = $request->name;
+            $user->login = $request->login;
+            $user->password = $request->password;
+            $user->prof = 0;
+
+            if ($user->save()) {
+                (new View())->toJSON($request->all());
+            }
         }
     }
 
     public function login(Request $request)
     {
-        if (Auth::attempt(['login' => $request->login, 'password' => $request->password])) {
-            $user = Auth::user();
-            $token = Auth::generateCSRF();
-            (new View())->toJSON(['user' => $user, 'token' => $token, 'message' => 'Вы успешно вошли']);
-        } else (new View())->toJSON(['message' => 'Такого пользователя не существует']);
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'login' => ['required'],
+                'password' => ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+            ]);
+
+            if ($validator->fails()) {
+                (new View())->toJSON(['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+            if (Auth::attempt(['login' => $request->login, 'password' => $request->password])) {
+                $user = Auth::user();
+                $token = Auth::generateCSRF();
+                (new View())->toJSON(['user' => $user, 'token' => $token, 'message' => 'Вы успешно вошли']);
+            } else (new View())->toJSON(['message' => 'Такого пользователя не существует']);
+        }
+
     }
 
     public function add_menu(Request $request)
