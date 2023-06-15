@@ -14,6 +14,7 @@ use Model\Typedish;
 use Model\Tables;
 use Src\Auth\Auth;
 use Src\Validator\Validator;
+
 class Admin
 {
     public function add_menu(Request $request): string
@@ -66,7 +67,7 @@ class Admin
         return (new View())->render('site.proverkaAdmina', ['carton' => $carton, 'typeDish' => $typeDish]);
     }
 
-    public function izmenenie(Request $request): string
+    public function izmenenie(): string
     {
 
         $typeDish = Typedish::all();
@@ -82,5 +83,28 @@ class Admin
             return (new View())->render('site.izmenenie', ['carton' => $carton, 'typeDish' => $typeDish]);
         }
     }
-    
+
+    public function update(): string
+    {
+
+
+        $fileUploader = new FileUploader($_FILES['photo']);
+
+        $destination = 'uploads';
+
+        $newFileName = $fileUploader->upload($destination);
+        if (DB::table('menu')->update([
+            'nameIng' => $_POST['nameIng'],
+            'ves' => $_POST['ves'],
+            'price' => $_POST['price'],
+            'description' => $_POST['description'],
+            'photo' => $destination . '/' . $newFileName,
+            'typeDishId' => $_POST['typeDishId'],
+        ])) {
+            app()->route->redirect('/proverka');
+        }
+
+        return (new View())->render('site.izmenenie', ['typeDish' => $typeDish]);
+    }
+
 }

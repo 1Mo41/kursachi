@@ -1,6 +1,52 @@
 {
     "packages": [
         {
+            "name": "1mo41/collect",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1Mo41/collect.git",
+                "reference": "c174e19950a661a00b1c246b3dc96c34a5920f5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1Mo41/collect/zipball/c174e19950a661a00b1c246b3dc96c34a5920f5c",
+                "reference": "c174e19950a661a00b1c246b3dc96c34a5920f5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "time": "2023-05-30T04:19:53+00:00",
+            "default-branch": true,
+            "type": "project",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "root",
+                    "email": "kolya.gavrilov.220@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/1Mo41/collect/issues",
+                "source": "https://github.com/1Mo41/collect/tree/master"
+            },
+            "install-path": "../1mo41/collect"
+        },
+        {
             "name": "brick/math",
             "version": "v0.11.x-dev",
             "version_normalized": "0.11.9999999.9999999-dev",

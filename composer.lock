@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b117e81c1ffdba1898ad3ac3547369aa",
+    "content-hash": "ad90640ab18412c0b0cbd220cf08dd33",
     "packages": [
+        {
+            "name": "1mo41/collect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1Mo41/collect.git",
+                "reference": "c174e19950a661a00b1c246b3dc96c34a5920f5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1Mo41/collect/zipball/c174e19950a661a00b1c246b3dc96c34a5920f5c",
+                "reference": "c174e19950a661a00b1c246b3dc96c34a5920f5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "default-branch": true,
+            "type": "project",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collect\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "root",
+                    "email": "kolya.gavrilov.220@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/1Mo41/collect/issues",
+                "source": "https://github.com/1Mo41/collect/tree/master"
+            },
+            "time": "2023-05-30T04:19:53+00:00"
+        },
         {
             "name": "brick/math",
             "version": "v0.11.x-dev",
@@ -1398,13 +1441,15 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "nikic/fast-route": 20,
         "illuminate/events": 20,
         "illuminate/database": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4 | ^8.0"
+        "php": "^7.4 | ^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

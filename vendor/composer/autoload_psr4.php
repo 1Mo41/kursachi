@@ -23,6 +23,7 @@ return array(
     'Illuminate\\Bus\\' => array($vendorDir . '/illuminate/bus'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
+    'Collect\\' => array($vendorDir . '/1mo41/collect/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     '' => array($baseDir . '/app'),

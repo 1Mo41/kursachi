@@ -11,6 +11,7 @@ Route::add('GET', '/glavnaya', [Controller\Site::class, 'glavnaya']);
 Route::add(['GET','POST'], '/add_menu', [Controller\Admin::class, 'add_menu'])
     ->middleware('auth','admin');
 Route::add(['POST','GET'], '/search', [Controller\Site::class, 'search']);
+Route::add(['POST','GET'], '/update', [Controller\Admin::class, 'update']);
 Route::add(['GET','POST'], '/proverkaAdmina', [Controller\Admin::class, 'proverkaAdmina'])
     ->middleware('auth','admin');
 Route::add(['GET','POST'], '/proverka', [Controller\Site::class, 'proverka']);

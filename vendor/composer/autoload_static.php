@@ -12,6 +12,7 @@ class ComposerStaticInitdc0b10a99296e791450f1391ed8a4f00
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        '5a98931103e8e353d7978915ef69ccae' => __DIR__ . '/..' . '/1mo41/collect/src/helpers.php',
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
@@ -54,6 +55,7 @@ class ComposerStaticInitdc0b10a99296e791450f1391ed8a4f00
         ),
         'C' => 
         array (
+            'Collect\\' => 8,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -133,6 +135,10 @@ class ComposerStaticInitdc0b10a99296e791450f1391ed8a4f00
         'Doctrine\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
+        ),
+        'Collect\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/1mo41/collect/src',
         ),
         'Carbon\\' => 
         array (

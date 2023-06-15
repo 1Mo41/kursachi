@@ -3,13 +3,24 @@
         'name' => 'zabyton/kursachi1',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '803351795b879e2c8d8afec50c6facc4708af2f7',
+        'reference' => '38b59f1464cdcc36b890490e571375879dc90daa',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        '1mo41/collect' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'c174e19950a661a00b1c246b3dc96c34a5920f5c',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../1mo41/collect',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => 'v0.11.x-dev',
             'version' => '0.11.9999999.9999999-dev',
@@ -228,7 +239,7 @@
         'zabyton/kursachi1' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '803351795b879e2c8d8afec50c6facc4708af2f7',
+            'reference' => '38b59f1464cdcc36b890490e571375879dc90daa',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
